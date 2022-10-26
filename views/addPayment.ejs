@@ -1,0 +1,43 @@
+<%- include('partials/header') -%>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6">
+            <div class ='mt-5'>
+<h2>Add Payment Method</h2>
+<h2>Credit or debit cards</h2>
+<h2>Choir2 accepts major credit and debit cards.</h2>
+<form action="/post/createPost" enctype="multipart/form-data" method="POST">
+    <div class="mb-3">
+      <label for="cardNumber" class="form-label">Credit Card Number</label>
+        <input name = 'cardNumber' class="input-credit-card form-control" placeholder="Enter credit card number" type="tel">
+        <button class="btn btn-primary btn-clear">clear</button>
+    </div>
+    <div class="mb-3">   Name on card
+      <label for="caption" class="form-label">Caption</label>
+      <textarea class="form-control" id="caption" name="caption"></textarea>
+    </div>
+    <div class="mb-3">        Expiration date
+
+      <label for="imgUpload" class="form-label">Image</label>
+      <input type="file" class="form-control" id="imageUpload" name="file">
+    </div>
+    <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+  </form> 
+
+Security Code (CVV/CVC)
+(What's this?)
+Set as default payment method.What's this?
+choir2 accepts all major credit and debit cards:
+
+Add Your card
+Cancel
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src = 'https://nosir.github.io/cleave.js/dist/cleave.min.js'></script>
+<script src = 'https://nosir.github.io/cleave.js/dist/cleave-phone.i18n.js'></script>
+<script src = 'https://nosir.github.io/cleave.js/js/lib.js'></script>
+<script src = '/js/main.js'></script>
+<%- include('partials/footer') -%>
