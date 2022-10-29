@@ -68,6 +68,9 @@
     opacity: 0.2;
 }
 
+.examples, .examples-note{
+    margin: 2rem;
+}
 
 @media(max-width: 650px) {
     .creditCardForm .owner,
