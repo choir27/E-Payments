@@ -42,7 +42,7 @@
             <% } %>
 
 
-            <a href = '/payment/payment/editPayment' class = "col-3 btn btn-primary">Edit Payment Method</a>
+            <a href = '/payment/edit/<%= userID %>' class = "col-3 btn btn-primary">Edit Payment Method</a>
             
 
             <% } %>
@@ -51,7 +51,7 @@
 
             <% if(check === 0) { %> 
               <h2>Make Payment</h2>
-              <a href = '/payment/payment/addPayment' class = "col-3 btn btn-primary">Add a Payment Method</a>
+              <a href = '/payment/add/addPayment' class = "col-3 btn btn-primary">Add a Payment Method</a>
             <% } %>
           </div>
       </div>

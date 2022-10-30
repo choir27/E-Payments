@@ -17,6 +17,14 @@ module.exports = {
       console.log(err)
     }
   },
+  getEditPayment: async (req, res) =>{
+    try{
+      const posts = await Payment.find({ user: req.params.id });
+      res.render("editPayment.ejs", { posts: posts, user: req.user, userID: req.user.id })
+    }catch(err){
+      console.log(err)
+    }
+  },
   getFeed: async (req, res) => {
     try {
       const posts = await Payment.find().sort({ createdAt: "desc" }).lean();
@@ -48,5 +56,18 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
+  },
+  editPayment: async (req,res) =>{
+    try{
+      let character = await Payment.findById(req.params.id).lean() 
+      req.body.user = req.user.id
+      character = await Payment.findOneAndUpdate({ _id: req.params.id }, req.body, {
+          new: true,
+          runValidators: true,
+        })
+res.redirect('/profile')
+  } catch(err){
+    console.log(err);
   }
-};
+}
+}
