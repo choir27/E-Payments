@@ -8,8 +8,51 @@
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
           <div class="mt-5">
-            <h2>Make Payment</h2>
-            <a href = '/payment/payment/addPayment' class = "col-3 btn btn-primary">Add a Payment Method</a>
+
+        
+              <% let check = 0 %>
+
+            <% for(let i = 0; i < posts.length; i++ ){ %>
+         
+
+<% function hideNumbers(num) { %>
+  <% let split = num.split(' ') %>
+  <% return split.map((ele,i)=>{ %>
+    <% if(i !== split.length -1) {%>
+     <% return ele = '*'.repeat(4) %>
+    <% } else { %>
+      <% return ele %>
+    <% } %>
+  <% }).join(' ')%>  
+<% } %>
+
+<% function hideCVV(n) { %>
+<% return n.split('').map(ele=>ele='*').join('') %>
+<% } %>
+
+
+            <% if(posts[i].user._id==userID) { %>
+              <h2>Payment Method</h2>
+              <h2>Name: <%= posts[i].name %></h2>
+              <h2>CVV: <%= hideCVV(posts[i].cvv) %></h2>
+              <h2>Card Number: <%= hideNumbers(posts[i].cardNumber) %></h2>
+              <h2>Expiration Date: <%= posts[i].expirationDateMonth%>/<%= posts[i].expirationDateYear %></h2>
+
+              <% check++ %>
+            <% } %>
+
+
+            <a href = '/payment/payment/editPayment' class = "col-3 btn btn-primary">Edit Payment Method</a>
+            
+
+            <% } %>
+
+
+
+            <% if(check === 0) { %> 
+              <h2>Make Payment</h2>
+              <a href = '/payment/payment/addPayment' class = "col-3 btn btn-primary">Add a Payment Method</a>
+            <% } %>
           </div>
       </div>
       <div class="col-6">
@@ -24,6 +67,29 @@
         </ul>
         <div class="row justify-content-center mt-5">
           <a class="btn btn-primary" href="/feed">Return to Feed</a>
+
+          <% if(check > 0) { %>
+            <h2>Payments Made</h2>
+
+            <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>Amount</th>
+                      <th>Title</th>
+                      <th>Date of payment</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  
+              </tbody>
+          </table>
+
+            <% } %>
         </div>  
       </div>  
     </div>
