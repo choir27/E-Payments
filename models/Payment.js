@@ -1,25 +1,19 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
 
-const PostSchema = new mongoose.Schema({
-  name: {
+const PaymentSchema = new mongoose.Schema({
+  recipient:{
     type: String,
-    required: true,
+    required: true
   },
-  cvv: {
-    type: String,
-    required: true,
-  },
-  cardNumber: {
-    type: String,
-    required: true,
-  },
-  expirationDateMonth:{
+  payment: {
     type: Number,
+    required: true
   },
-  expirationDateYear:{
-    type: Number,
-    },
+  automatic: {
+    type: String,
+    default: 'Yes',
+    enum: ['Yes', 'No']
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -32,4 +26,4 @@ const PostSchema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Payment", PaymentSchema);

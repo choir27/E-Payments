@@ -83,3 +83,7 @@
         text-align: left;
     }
 }
+
+#ePayments .text-center span{
+    color: white;
+}

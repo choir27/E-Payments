@@ -27,8 +27,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="/css/demo.css">
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/payment.css">
   </head>
 <body id = 'ePayments'>
 <header>
@@ -49,23 +48,23 @@
             <h1>Please use one of the dummy cards below to edit your card payment method</h1>
         </div>
         <div class="payment">
-            <form action = "/payment/editPayment/<%=posts[0]._id %>?_method=PUT" method = 'POST'>
+            <form action = "/payment/editPayment/<%=payment[0]._id %>?_method=PUT" method = 'POST'>
                 <div class="form-group owner">
                     <label for="name">Name on Card</label>
-                    <input value = '<%= posts[0].name %>' type="text" class="form-control" name = 'name' id="name">
+                    <input value = '<%= payment[0].name %>' type="text" class="form-control" name = 'name' id="name">
                 </div>
                 <div class="form-group CVV">
                     <label for="cvv">CVV</label>
-                    <input value = '<%= posts[0].cvv %>' type="text" class="form-control" name = 'cvv' id="cvv">
+                    <input value = '<%= payment[0].cvv %>' type="text" class="form-control" name = 'cvv' id="cvv">
                 </div>
                 <div class="form-group" id="card-number-field">
                     <label for="cardNumber">Card Number</label>
-                    <input value = '<%= posts[0].cardNumber %>' type="text" name = 'cardNumber' class="form-control" id="cardNumber">
+                    <input value = '<%= payment[0].cardNumber %>' type="text" name = 'cardNumber' class="form-control" id="cardNumber">
                 </div>
                 <div class="form-group" id="expiration-date">
                     <label>Expiration Date</label>
 
-                    <% if(posts[0].expirationDateMonth == 1) {%>
+                    <% if(payment[0].expirationDateMonth == 1) {%>
                         <select name = 'expirationDateMonth'>
                             <option value="01" selected>January</option>
                             <option value="02">February </option>
@@ -80,7 +79,7 @@
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
-                    <% } else if(posts[0].expirationDateMonth == 2) { %>
+                    <% } else if (payment[0].expirationDateMonth == 2) { %>
                         <select name = 'expirationDateMonth'>
                             <option value="01">January</option>
                             <option value="02" selected>February </option>
@@ -95,7 +94,7 @@
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
-                        <% } else if(posts[0].expirationDateMonth == 3) { %>
+                        <% } else if(payment[0].expirationDateMonth == 3) { %>
                             <select name = 'expirationDateMonth'>
                                 <option value="01">January</option>
                                 <option value="02">February </option>
@@ -110,7 +109,7 @@
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
-                            <% } else if(posts[0].expirationDateMonth == 4) { %>
+                            <% } else if(payment[0].expirationDateMonth == 4) { %>
                                 <select name = 'expirationDateMonth'>
                                     <option value="01">January</option>
                                     <option value="02">February </option>
@@ -125,7 +124,7 @@
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>
-                                <% } else if(posts[0].expirationDateMonth == 5) { %>
+                                <% } else if(payment[0].expirationDateMonth == 5) { %>
                                     <select name = 'expirationDateMonth'>
                                         <option value="01">January</option>
                                         <option value="02">February </option>
@@ -140,7 +139,7 @@
                                         <option value="11">November</option>
                                         <option value="12">December</option>
                                     </select>
-                                        <% } else if(posts[0].expirationDateMonth == 6) { %>
+                                        <% } else if(payment[0].expirationDateMonth == 6) { %>
                         <select name = 'expirationDateMonth'>
                             <option value="01">January</option>
                             <option value="02">February </option>
@@ -155,7 +154,7 @@
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
-                        <% } else if(posts[0].expirationDateMonth == 7) { %>
+                        <% } else if(payment[0].expirationDateMonth == 7) { %>
                             <select name = 'expirationDateMonth'>
                                 <option value="01">January</option>
                                 <option value="02">February </option>
@@ -170,7 +169,7 @@
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
-                            <% } else if(posts[0].expirationDateMonth == 8) { %>
+                            <% } else if(payment[0].expirationDateMonth == 8) { %>
                                 <select name = 'expirationDateMonth'>
                                     <option value="01">January</option>
                                     <option value="02">February </option>
@@ -186,7 +185,7 @@
                                     <option value="12">December</option>
                                 </select>
 
-                            <% } else if(posts[0].expirationDateMonth == 9) { %>
+                            <% } else if(payment[0].expirationDateMonth == 9) { %>
                         <select name = 'expirationDateMonth'>
                             <option value="01">January</option>
                             <option value="02">February </option>
@@ -201,7 +200,7 @@
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
-                        <% } else if(posts[0].expirationDateMonth == 10) { %>
+                        <% } else if(payment[0].expirationDateMonth == 10) { %>
                             <select name = 'expirationDateMonth'>
                                 <option value="01">January</option>
                                 <option value="02">February </option>
@@ -216,7 +215,7 @@
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
-                                <% } else if(posts[0].expirationDateMonth == 11) { %>
+                                <% } else if(payment[0].expirationDateMonth == 11) { %>
                         <select name = 'expirationDateMonth'>
                             <option value="01">January</option>
                             <option value="02">February </option>
@@ -231,7 +230,7 @@
                             <option value="11" selected>November</option>
                             <option value="12">December</option>
                         </select>
-                        <% } else if(posts[0].expirationDateMonth == 12) { %>
+                        <% } else if(payment[0].expirationDateMonth == 12) { %>
                             <select name = 'expirationDateMonth'>
                                 <option value="01">January</option>
                                 <option value="02">February </option>
@@ -250,7 +249,7 @@
 
 
 
-                        <%  if(posts[0].expirationDateYear == 16) {%>
+                        <%  if(payment[0].expirationDateYear == 16) {%>
                     <select name = 'expirationDateYear'>
                         <option value="16" selected> 2016</option>
                         <option value="17"> 2017</option>
@@ -259,7 +258,7 @@
                         <option value="20"> 2020</option>
                         <option value="21"> 2021</option>
                     </select>
-                    <% } else if(posts[0].expirationDateYear == 17) {%>
+                    <% } else if(payment[0].expirationDateYear == 17) {%>
                         <select name = 'expirationDateYear'>
                             <option value="16"> 2016</option>
                             <option value="17" selected> 2017</option>
@@ -268,7 +267,7 @@
                             <option value="20"> 2020</option>
                             <option value="21"> 2021</option>
                         </select>
-                        <% } else if(posts[0].expirationDateYear == 18) {%>
+                        <% } else if(payment[0].expirationDateYear == 18) {%>
                         <select name = 'expirationDateYear'>
                             <option value="16"> 2016</option>
                             <option value="17"> 2017</option>
@@ -277,7 +276,7 @@
                             <option value="20"> 2020</option>
                             <option value="21"> 2021</option>
                         </select>
-                        <% } else if(posts[0].expirationDateYear == 19) {%>
+                        <% } else if(payment[0].expirationDateYear == 19) {%>
                             <select name = 'expirationDateYear'>
                                 <option value="16"> 2016</option>
                                 <option value="17"> 2017</option>
@@ -286,7 +285,7 @@
                                 <option value="20"> 2020</option>
                                 <option value="21"> 2021</option>
                             </select>
-                           <% } else if(posts[0].expirationDateYear == 20) {%>
+                           <% } else if(payment[0].expirationDateYear == 20) {%>
                             <select name = 'expirationDateYear'>
                                 <option value="16"> 2016</option>
                                 <option value="17"> 2017</option>
@@ -295,7 +294,7 @@
                                 <option value="20" selected> 2020</option>
                                 <option value="21"> 2021</option>
                             </select>
-                           <% } else if(posts[0].expirationDateYear == 21) {%>
+                           <% } else if(payment[0].expirationDateYear == 21) {%>
                             <select name = 'expirationDateYear'>
                                 <option value="16"> 2016</option>
                                 <option value="17"> 2017</option>

@@ -1,11 +1,10 @@
-const cloudinary = require("../middleware/cloudinary");
-const Payment = require("../models/Payment");
+const Payment = require("../models/PaymentMethod");
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Payment.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user, userID: req.user.id });
+      const payment = await Payment.find({ user: req.user.id });
+      res.render("profile.ejs", { payment: payment, user: req.user, userID: req.user.id });
     } catch (err) {
       console.log(err);
     }
@@ -19,26 +18,10 @@ module.exports = {
   },
   getEditPayment: async (req, res) =>{
     try{
-      const posts = await Payment.find({ user: req.params.id });
-      res.render("editPayment.ejs", { posts: posts, user: req.user, userID: req.user.id })
+      const payment = await Payment.find({ user: req.params.id });
+      res.render("editPayment.ejs", { payment: payment, user: req.user, userID: req.user.id })
     }catch(err){
       console.log(err)
-    }
-  },
-  getFeed: async (req, res) => {
-    try {
-      const posts = await Payment.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getPost: async (req, res) => {
-    try {
-      const post = await Payment.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
-    } catch (err) {
-      console.log(err);
     }
   },
   addPayment: async (req, res) => {
@@ -69,5 +52,22 @@ res.redirect('/profile')
   } catch(err){
     console.log(err);
   }
-}
+},
+deletePayment: async (req,res)=>{
+  try{
+  await Payment.remove({ _id: req.params.id });
+  console.log("Deleted Payment");
+  res.redirect("/profile");
+  }catch(err){
+    console.log(err)
+  }
+},
+getMakePayment: async (req,res)=>{
+  try{
+    const payment = await Payment.find({ user: req.params.id });
+    res.render("makePayment.ejs", { payment: payment, user: req.user, userID: req.user.id })
+  }catch(err){
+    console.log(err)
+  }
+} 
 }

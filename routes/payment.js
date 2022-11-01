@@ -1,18 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const upload = require("../middleware/multer");
-const postsController = require("../controllers/payments");
+const paymentController = require("../controllers/payments");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Post Routes - simplified for now
-router.get("/add/addPayment", ensureAuth, postsController.getPayment);
+router.get("/add/addPayment", ensureAuth, paymentController.getPayment);
 
-router.get("/edit/:id", ensureAuth, postsController.getEditPayment);
+router.get("/edit/:id", ensureAuth, paymentController.getEditPayment);
 
-router.get("/:id", ensureAuth, postsController.getPost);
+router.get("/makePayment", paymentController.getMakePayment);
 
-router.post("/createPayment", postsController.addPayment);
+router.post("/createPayment", paymentController.addPayment);
 
-router.put("/editPayment/:id", postsController.editPayment);
+router.put("/editPayment/:id", paymentController.editPayment);
+
+router.delete("/deletePayment/:id", paymentController.deletePayment);
 
 module.exports = router;
