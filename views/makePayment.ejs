@@ -9,20 +9,20 @@
         <form action="/payment/makePayment" method = 'POST'>
           <div class="form-group owner mb-3">
             <label for="recipient" class = 'form-label'>Recipient Of Payment</label>
-            <input class = 'form-control' id = 'recipient' type="text" name = 'recipient' placeholder = 'What is this for?'>
+            <input required = 'required' class = 'form-control' id = 'recipient' type="text" name = 'recipient' placeholder = 'What is this for?'>
           </div>
           <div class="form-group owner mb-3">
             <label for="payment" class = 'form-label'>Amount of Payment</label>
-            <input class = 'form-control' id = 'payment' type="number" name = 'payment' placeholder = 'How much?'>
+            <input required = 'required' class = 'form-control' step="0.01" id = 'payment' type="number" name = 'payment' placeholder = 'How much?'>
           </div>
 
-          <div class="form-group owner mb-3">
+          <!-- <div class="form-group owner mb-3">
             <label for ='automatic' class = 'form-label'>Allow Automatic Monthly Payments?</label>
             <select class = 'form-control' name="automatic" id="automatic">
               <option value = 'Yes' selected>Yes</option>
               <option value = 'No'>No</option>
             </select>
-          </div>
+          </div> -->
             <button type="submit" class="btn btn-primary" value="Payment">Make Payment</button>
 
         </form>

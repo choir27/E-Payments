@@ -13,7 +13,7 @@
               <% let check = 0 %>
 
             <% for(let i = 0; i < payment.length; i++ ){ %>
-         
+
 
 <% function hideNumbers(num) { %>
   <% let split = num.split(' ') %>
@@ -81,12 +81,18 @@
                   </tr>
               </thead>
               <tbody>
+                <% for(let i = 0; i< pay.length; i++) { %>
+                  <% if(pay[i].user._id == userID) { %>
                   <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+
+                    <% const months = { 1 : 'January',2 : 'February',3 : 'March',4 : 'April',5 : 'May',6 : 'June',7 : 'July',8 : 'August',9 : 'September',10 : 'October',11 : 'November',12 : 'December' } %>
+
+                      <td><%= pay[i].payment %></td>
+                      <td><%= pay[i].recipient %></td>
+                      <td> <%= months[pay[i].createdAt.getMonth() + 1] %> <%= pay[i].createdAt.getDate() %>, <%= pay[i].createdAt.getFullYear() %> <%= pay[i].createdAt.getHours() %>:<%= pay[i].createdAt.getMinutes() %></td>
                   </tr>
-                  
+                  <% } %>
+                  <% } %>
               </tbody>
           </table>
 

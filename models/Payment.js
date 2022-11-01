@@ -2,18 +2,16 @@ const mongoose = require("mongoose");
 
 const PaymentSchema = new mongoose.Schema({
   recipient:{
-    type: String,
-    required: true
+    type: String
   },
   payment: {
-    type: Number,
-    required: true
+    type: Number
   },
-  automatic: {
-    type: String,
-    default: 'Yes',
-    enum: ['Yes', 'No']
-  },
+//   automatic: {
+//     type: String,
+//     default: 'Yes',
+//     enum: ['Yes', 'No']
+//   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

@@ -12,6 +12,8 @@ router.get("/makePayment", paymentController.getMakePayment);
 
 router.post("/createPayment", paymentController.addPayment);
 
+router.post("/makePayment", paymentController.makePayment);
+
 router.put("/editPayment/:id", paymentController.editPayment);
 
 router.delete("/deletePayment/:id", paymentController.deletePayment);

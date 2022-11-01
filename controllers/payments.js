@@ -1,10 +1,12 @@
 const Payment = require("../models/PaymentMethod");
+const Pay = require("../models/Payment");
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
       const payment = await Payment.find({ user: req.user.id });
-      res.render("profile.ejs", { payment: payment, user: req.user, userID: req.user.id });
+      const pay = await Pay.find({ user: req.user.id });
+      res.render("profile.ejs", { pay: pay, payment: payment, user: req.user, userID: req.user.id });
     } catch (err) {
       console.log(err);
     }
@@ -20,6 +22,19 @@ module.exports = {
     try{
       const payment = await Payment.find({ user: req.params.id });
       res.render("editPayment.ejs", { payment: payment, user: req.user, userID: req.user.id })
+    }catch(err){
+      console.log(err)
+    }
+  },
+  makePayment: async (req, res) => {
+    try {
+      await Pay.create({
+        recipient: req.body.recipient,
+        payment: req.body.payment,
+        user: req.user.id,
+      });
+      console.log("Payment has been made!");
+      res.redirect("/profile");
     }catch(err){
       console.log(err)
     }
