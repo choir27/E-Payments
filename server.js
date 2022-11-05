@@ -10,7 +10,6 @@ const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const paymentRoutes = require("./routes/payment");
-let PORT = 8000
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -60,6 +59,6 @@ app.use("/", mainRoutes);
 app.use("/payment", paymentRoutes);
 
 //Server Running
-app.listen(PORT || process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!");
 });
